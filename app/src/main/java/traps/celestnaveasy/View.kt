@@ -67,8 +67,9 @@ fun MainPanel() {
     ){
 
         Text(
-            "FEUILLE DE CALCUL\nDROITE DE HAUTEUR\nLINE OF POSITION",
+            "FEUILLE DE CALCUL\nDROITE DE HAUTEUR",
             fontSize = 30.sp,
+            lineHeight = 35.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onSecondaryContainer,
             textAlign = TextAlign.Center,
@@ -78,8 +79,8 @@ fun MainPanel() {
         )
         Text(
             "Cette feuille de calcul permet de tracer une droite de hauteur (line of position) après une mesure au sextant de la hauteur du soleil. "+
-            "Elle intègre un algorithme de calcul des positions du soleil (https://midcdmz.nrel.gov/spa) pour une date+heure donnée, ce qui permet de sauter (ou vérifier) l'étape de consultation des almanachs papier. "+
-            "Elle déroule ensuite les calculs pas à pas de manière pédagogique. Elle donne au final la longueur et la direction de l'intercept qui vous permettra de tracer sur la carte votre droite de hauteur.",
+            "Elle intègre un algorithme de calcul des positions du soleil (https://midcdmz.nrel.gov/spa) pour une date+heure donnée, ce qui permet de sauter (ou vérifier) l'étape de consultation des éphémérides papier. "+
+            "Elle déroule ensuite les calculs pas à pas. Elle donne au final la longueur et la direction de l'intercept qui vous permettra de tracer sur la carte votre droite de hauteur.",
             modifier = Modifier.fillMaxSize()
         )
         Spacer(modifier = Modifier.height(20.dp))
@@ -247,7 +248,7 @@ fun MainPanel() {
             //if (mainController.fiveMeasures.value) Text(mainController.explain)
             ResultRow("Heure Mesure retenue", "${rawMeasure.timeValue.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}", MaterialTheme.colorScheme.primaryContainer)
             Text("Le ${mainController.day}-${mainController.month}-${mainController.year} à ${rawMeasure.timeValue.format(DateTimeFormatter.ofPattern("HH:mm:ss"))}, " +
-                "les almanachs papiers ou les algorithmes calculant la position du soleil nous donnent les valeurs suivantes:")
+                "les éphémérides papiers ou les algorithmes calculant la position du soleil nous donnent les valeurs suivantes:")
 
             ResultRow("Sun declination (DEC)\n(Latitude du soleil)\nPositif au nord", "${"%.${5}f°".format(mainController.sunDeclination)}")
             ResultRow("Greenwich Hour Angle (GHA)\n(Longitude du soleil)\nPositif à l'est", "${"%.${5}f°".format(mainController.sunHourAngle)}")
